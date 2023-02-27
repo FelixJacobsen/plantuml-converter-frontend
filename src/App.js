@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React, { useState, useRef } from "react";
+import Header from "./components/Header";
 import './App.css';
+import SaveButton from "./components/SaveButton";
+import FormButtons from "./components/FormButtons";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import YamlComponent from "./components/YamlComponent";
+
 
 function App() {
+  
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='container'>
+
+
+        <YamlComponent />
+
+    <Header />
+
+
+      
+
+      </div>
+      
   );
 }
 
