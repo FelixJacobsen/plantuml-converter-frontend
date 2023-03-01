@@ -3,7 +3,7 @@ import './Header.css';
 
 function SaveButton(){
     const [svgText] = useState("");
-
+    
     return(
         <button type="button" className='save-button' onClick={() => {
             const svgBlob = new Blob([svgText], { type: 'image/svg+xml' });
@@ -18,10 +18,7 @@ function SaveButton(){
           }}>
             Save as SVG
           </button>
-
     )
-
-
 }
 
 export default SaveButton;
