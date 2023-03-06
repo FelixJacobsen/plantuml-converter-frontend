@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import YamlComponent from "./components/YamlComponent/YamlComponent";
 import PumlComponent from "./components/PumlComponent/PumlComponent"
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/yaml" element={<YamlComponent/>}> </Route>
           <Route path="/puml" element={<PumlComponent/>}> </Route>
         </Routes>
+      <Footer />
       </div>
   );
 }
