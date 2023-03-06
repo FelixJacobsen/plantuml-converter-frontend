@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import './YamlComponent.css';
-import SaveButton from "./SaveButton";
+import './PumlComponent.css';
+import SaveButton from "../Buttons/SaveButton";
 
-function YamlComponent() {
+function PumlComponent() {
     const [text, setText] = useState("");
     const [svgText, setSvgText] = useState("");
-    const svgRef = useRef(null);
+    const svgRef = useRef(null); 
 
     useEffect(() => {
       if (svgRef.current) {
@@ -14,17 +14,17 @@ function YamlComponent() {
         svgRef.current.setAttribute("height", `${height + 20}px`);
       }
     }, [svgText]); 
+    
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const response = await fetch("http://localhost:8080/api/yaml/text", {
+      const response = await fetch("http://localhost:8080/api/puml/text", {
         method: "POST",
         headers: {
           "Content-Type": "text/plain",
         },
         body:text,
       });
-  
       const svgResponse = await response.text();
       setSvgText(svgResponse);
     };
@@ -33,7 +33,7 @@ function YamlComponent() {
       <div className='container'>
         <div className='form-container'>
           <form onSubmit={handleSubmit} className="form">
-            <label>Yaml data</label>
+            <label>Enter your puml here</label>
             <textarea
               placeholder='Enter your yaml data here'
               minLength={1}
@@ -48,13 +48,13 @@ function YamlComponent() {
           </form>
         </div>
         <div className='svg-container'>
-          <label>PlantUML diagram</label>
+          <label>UML diagram</label>
             <svg  
               className='svg-diagram'
               dangerouslySetInnerHTML={{ __html: svgText }}
-                ref={svgRef}/>
+                 ref={svgRef} />
           <div className='svg-buttons'>
-          <SaveButton />
+          <SaveButton svgText={svgText} />
             <button type="button" className='remove-button' onClick={() => setSvgText('')}>Remove diagram</button>
           </div>
         </div>
@@ -62,8 +62,7 @@ function YamlComponent() {
     );
   }
 
-
-export default YamlComponent;
+export default PumlComponent;
 
 
 

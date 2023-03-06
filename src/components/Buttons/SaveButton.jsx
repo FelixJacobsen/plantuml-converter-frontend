@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import './Header.css';
 
-function SaveButton(){
-    const [svgText] = useState("");
-    
+function SaveButton({svgText}){
     return(
         <button type="button" className='save-button' onClick={() => {
             const svgBlob = new Blob([svgText], { type: 'image/svg+xml' });

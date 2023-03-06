@@ -1,37 +1,21 @@
 import React, { useState, useRef } from "react";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import YamlComponent from "./components/YamlComponent";
-import PumlComponent from "./components/PumlComponent"
-import HomePage from "./components/HomePage";
+import { Route, Routes } from 'react-router-dom';
+import YamlComponent from "./components/YamlComponent/YamlComponent";
+import PumlComponent from "./components/PumlComponent/PumlComponent"
 
 
 function App() {
 
-  let component;
-  switch (window.location.pathname){
-    case "/":
-      component = <HomePage/>
-      break
-    case "/yaml":
-      component = <YamlComponent/>
-      break
-    case "/puml":
-      component = <PumlComponent/>
-      break;
-  }
   return (
-    <>
-  
     <div className='container'>
     <Header />
-    <YamlComponent></YamlComponent>
         <Routes>
-          <Route path="/" element={HomePage}/>
+          <Route path="/yaml" element={<YamlComponent/>}> </Route>
+          <Route path="/puml" element={<PumlComponent/>}> </Route>
         </Routes>
       </div>
-      </>
   );
 }
 
